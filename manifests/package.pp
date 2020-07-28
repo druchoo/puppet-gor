@@ -30,16 +30,17 @@ class gor::package {
 
   # If gor is not running as root, set up permissions to capture traffic
   if ($runuser != 'root') {
-    exec { "setcap \"cap_net_raw,cap_net_admin+eip\" ${binary_path}/gor":
-      path        => ['/sbin', '/usr/sbin'],
-      subscribe   => Archive["gor-${version}"],
-      refreshonly => true,
-    }
-
     file { "${binary_path}/gor":
       owner     => $runuser,
       group     => $runuser,
       subscribe => Archive["gor-${version}"],
+    }
+
+    exec { "setcap \"cap_net_raw,cap_net_admin+eip\" ${binary_path}/gor":
+      path        => ['/sbin', '/usr/sbin'],
+      subscribe   => Archive["gor-${version}"],
+      refreshonly => true,
+      require     => File["${binary_path}/gor"],
     }
   }
 

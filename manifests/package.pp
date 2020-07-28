@@ -17,14 +17,13 @@ class gor::package {
   }
 
   archive { "gor-${version}" :
-    ensure           => $ensure,
-    url              => $source_url_real,
-    target           => $binary_path,
-    follow_redirects => true,
-    extension        => 'tar.gz',
-    digest_string    => $digest_string,
-    digest_type      => $digest_type,
-    src_target       => '/tmp',
+    ensure        => $ensure,
+    url           => $source_url_real,
+    target        => $binary_path,
+    extension     => 'tar.gz',
+    digest_string => $digest_string,
+    digest_type   => $digest_type,
+    src_target    => '/tmp',
   }
 
   # If gor is not running as root, set up permissions to capture traffic

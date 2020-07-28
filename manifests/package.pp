@@ -12,7 +12,7 @@ class gor::package {
   $source_url    = $::gor::source_url
 
   $source_url_real = $source_url ? {
-    undef => "https://github.com/buger/gor/releases/download/v${version}/gor_v${version}_x64.tar.gz",
+    undef => "https://github.com/buger/gor/releases/download/v${version}/gor_${version}_x64.tar.gz",
     default => $source_url,
   }
 

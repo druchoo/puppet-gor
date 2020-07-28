@@ -24,7 +24,7 @@ class gor::package {
     creates       => "${$binary_path}/gor",
     extract       => true,
     extract_path  => $binary_path,
-    path          => '/tmp',
+    path          => join(['/tmp', basename($source_url_real)], '/'),
     source        => $source_url_real,
   }
 

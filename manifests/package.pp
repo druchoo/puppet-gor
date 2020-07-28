@@ -35,6 +35,12 @@ class gor::package {
       subscribe   => Archive["gor-${version}"],
       refreshonly => true,
     }
+
+    file { "${binary_path}/gor":
+      owner     => $runuser,
+      group     => $runuser,
+      subscribe => Archive["gor-${version}"],
+    }
   }
 
 

@@ -24,10 +24,8 @@ class gor::package {
     creates       => "${$binary_path}/gor",
     extract       => true,
     extract_path  => $binary_path,
-    group         => $runuser,
     path          => join(['/tmp', basename($source_url_real)], '/'),
     source        => $source_url_real,
-    user          => $runuser,
   }
 
   # If gor is not running as root, set up permissions to capture traffic
